@@ -86,28 +86,23 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const root = ReactDOM.createRoot($('#root'));
 
-function ChangeCurrency({ num } = props) {
-    return new Intl.NumberFormat('VN-vi', { style: 'currency', currency: 'VND' }).format(num);
+
+
+const Form = {
+    Input() {
+        return <input />
+    },
+    Checkbox() {
+        return <input type="checkbox" />
+    }
 }
 
-function Course({ title, description, image, price } = props) {
-    return <div className="course-wrapper">
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <img src={image}></img>
-        <p><ChangeCurrency num={price} /></p>
-    </div>
+function App() {
+    return (
+        <div className="wrapper">
+            <Form.Checkbox />
+        </div>
+    )
 }
 
-root.render(
-    <div className="app">
-        {courses.map((course, i) => {
-            return <Course
-                key={i} title={course.title}
-                description={course.description}
-                image={course.image_url}
-                price={course.price}
-            />
-        })}
-    </div>
-)
+root.render(<App />)
